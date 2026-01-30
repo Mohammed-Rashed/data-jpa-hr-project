@@ -20,6 +20,18 @@ public class Employee {
     @JoinColumn(name = "department_id",referencedColumnName = "id")
     private Department department;
 
+    @OneToOne()
+    @JoinColumn(name="user_id", referencedColumnName = "id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Department getDepartment() {
         return department;
     }
