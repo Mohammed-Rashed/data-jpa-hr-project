@@ -4,6 +4,9 @@ import com.rashed.datajpahrproject.entity.Employee;
 import com.rashed.datajpahrproject.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 @Service
 public class EmployeeService {
@@ -26,5 +29,8 @@ public class EmployeeService {
         emp.setSalary(employee.getSalary());
         emp.setDepartment(employee.getDepartment());
         return employeeRepo.save(emp);
+    }
+    public List<Employee> findByDepartment(Long departmentId) {
+        return employeeRepo.findByDepartmentId(departmentId);
     }
 }

@@ -1,5 +1,6 @@
 package com.rashed.datajpahrproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 
@@ -13,6 +14,12 @@ public class Employee {
     private String salary;
 
 
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "department_id",referencedColumnName = "id")
+    private Department department;
+
     public Department getDepartment() {
         return department;
     }
@@ -20,11 +27,6 @@ public class Employee {
     public void setDepartment(Department department) {
         this.department = department;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "department_id",referencedColumnName = "id")
-    private Department department;
-
     public Long getId() {
         return id;
     }

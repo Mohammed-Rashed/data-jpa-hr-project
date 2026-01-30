@@ -14,6 +14,7 @@ public class DepartmentController {
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
+
     @GetMapping("find/{id}")
     public Department findById(@PathVariable Long id) {
         return departmentService.getById(id);

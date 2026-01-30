@@ -4,6 +4,8 @@ import com.rashed.datajpahrproject.entity.Employee;
 import com.rashed.datajpahrproject.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("employees")
 public class EmployeeController {
@@ -28,6 +30,10 @@ public class EmployeeController {
     @PutMapping()
     public  Employee update(@RequestBody Employee employee) {
         return employeeService.updateEmployee(employee);
+    }
+    @GetMapping("find-by-department/{departmentId}")
+    public List<Employee> findByDepartment(@PathVariable Long departmentId) {
+        return employeeService.findByDepartment(departmentId);
     }
 
 }

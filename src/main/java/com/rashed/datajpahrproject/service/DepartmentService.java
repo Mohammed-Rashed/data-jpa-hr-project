@@ -3,13 +3,13 @@ package com.rashed.datajpahrproject.service;
 import com.rashed.datajpahrproject.entity.Department;
 import com.rashed.datajpahrproject.repository.DepartmentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DepartmentService {
     @Autowired
     private DepartmentRepo departmentRepo;
-
 
 
 
