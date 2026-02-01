@@ -20,7 +20,7 @@ public class Employee {
     @JoinColumn(name = "department_id",referencedColumnName = "id")
     private Department department;
 
-    @OneToOne()
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", referencedColumnName = "id")
     private User user;
 

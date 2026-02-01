@@ -1,6 +1,5 @@
 package com.rashed.datajpahrproject.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public class Department {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department",fetch =  FetchType.LAZY)
     private List<Employee> employees;
 
     public List<Employee> getEmployees() {

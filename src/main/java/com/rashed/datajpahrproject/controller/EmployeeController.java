@@ -1,6 +1,7 @@
 package com.rashed.datajpahrproject.controller;
 
 import com.rashed.datajpahrproject.entity.Employee;
+import com.rashed.datajpahrproject.projection.EmployeePorjection;
 import com.rashed.datajpahrproject.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +16,8 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
     @GetMapping("find/{id}")
-    public Employee findById(@PathVariable Long id) {
-        return employeeService.getEmployeeById(id);
+    public EmployeePorjection findById(@PathVariable Long id) {
+        return employeeService.findProjectedById(id);
     }
     @GetMapping("find-by-name/{name}")
     public Employee findByName(@PathVariable String name) {
@@ -27,10 +28,10 @@ public class EmployeeController {
         return employeeService.saveEmployee(employee);
     }
 
-    @PutMapping()
-    public  Employee update(@RequestBody Employee employee) {
-        return employeeService.updateEmployee(employee);
-    }
+//    @PutMapping()
+//    public  Employee update(@RequestBody Employee employee) {
+//        return employeeService.updateEmployee(employee);
+//    }
     @GetMapping("find-by-department/{departmentId}")
     public List<Employee> findByDepartment(@PathVariable Long departmentId) {
         return employeeService.findByDepartment(departmentId);
