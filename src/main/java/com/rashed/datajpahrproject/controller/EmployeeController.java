@@ -3,6 +3,10 @@ package com.rashed.datajpahrproject.controller;
 import com.rashed.datajpahrproject.entity.Employee;
 import com.rashed.datajpahrproject.projection.EmployeePorjection;
 import com.rashed.datajpahrproject.service.EmployeeService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +39,11 @@ public class EmployeeController {
     @GetMapping("find-by-department/{departmentId}")
     public List<Employee> findByDepartment(@PathVariable Long departmentId) {
         return employeeService.findByDepartment(departmentId);
+    }
+    @GetMapping("filter/{keyword}")
+    public Page<EmployeePorjection> findByDepartment(@PathVariable String keyword, @RequestParam int page) {
+        Pageable sort = PageRequest.of(page, 1, Sort.by("name"));
+        return employeeService.filter(keyword, sort);
     }
 
 }

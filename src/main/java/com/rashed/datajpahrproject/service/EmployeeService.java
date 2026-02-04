@@ -4,6 +4,9 @@ import com.rashed.datajpahrproject.entity.Employee;
 import com.rashed.datajpahrproject.projection.EmployeePorjection;
 import com.rashed.datajpahrproject.repository.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -33,5 +36,8 @@ public class EmployeeService {
 //    }
     public List<Employee> findByDepartment(Long departmentId) {
         return employeeRepo.findByDepartmentId(departmentId);
+    }
+    public Page<EmployeePorjection> filter(String keyword, Pageable sort) {
+        return employeeRepo.filter(keyword,sort);
     }
 }
